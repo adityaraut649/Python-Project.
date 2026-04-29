@@ -1,3 +1,4 @@
+/* Page background */
 body {
   margin: 0;
   font-family: 'Segoe UI', sans-serif;
@@ -8,6 +9,7 @@ body {
   height: 100vh;
 }
 
+/* Card */
 .container {
   background: #f8fafc;
   padding: 40px;
@@ -16,17 +18,20 @@ body {
   box-shadow: 0 4px 15px rgba(0,0,0,0.1);
 }
 
+/* Title */
 h2 {
   margin: 0;
   color: #0f172a;
 }
 
+/* Subtitle */
 .subtitle {
   color: #64748b;
   font-size: 14px;
   margin-bottom: 20px;
 }
 
+/* Labels */
 label {
   display: block;
   margin-top: 15px;
@@ -34,7 +39,8 @@ label {
   color: #0f172a;
 }
 
-input {
+/* Inputs */
+input, textarea {
   width: 100%;
   padding: 12px;
   margin-top: 6px;
@@ -45,10 +51,12 @@ input {
   background: #fff;
 }
 
-input:focus {
+/* Focus effect */
+input:focus, textarea:focus {
   border-color: #3b82f6;
 }
 
+/* Button */
 button {
   width: 100%;
   margin-top: 25px;
@@ -62,10 +70,12 @@ button {
   cursor: pointer;
 }
 
+/* Button hover */
 button:hover {
   background-color: #1e293b;
 }
 
+/* Bottom text */
 .footer {
   text-align: center;
   margin-top: 15px;

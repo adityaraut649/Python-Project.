@@ -4,29 +4,43 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Sign Up</title>
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'signup.css' %}" />
 </head>
-
 <body>
-  <form action="{% url 'signup' %}" method="POST">
-    {% csrf_token %}
+  <div class="card">
+    <h1>Create Account</h1>
+    <p>Enter your details to get started</p>
 
-    <label>Username</label>
-    <input type="text" name="username" required />
-    <br><br>
+    <form action="{% url 'signup' %}" method="POST">
+      {% csrf_token %}
 
-    <label>Password</label>
-    <input type="password" name="password" required />
-    <br><br>
+      <div class="form-group">
+        <label>Username</label>
+        <input type="text" name="username" required />
+      </div>
 
-    <label>Mobile</label>
-    <input type="tel" name="mobile" required />
-    <br><br>
+      <div class="form-group">
+        <label>Password</label>
+        <input type="password" name="password" required />
+      </div>
 
-    <label>Address</label>
-    <textarea name="address" required></textarea>
-    <br><br>
+      <div class="form-group">
+        <label>Mobile</label>
+        <input type="tel" name="mobile" required />
+      </div>
 
-    <button type="submit">Sign Up</button>
-  </form>
+      <div class="form-group">
+        <label>Address</label>
+        <textarea name="address" required></textarea>
+      </div>
+
+      <button type="submit" class="btn">Sign Up</button>
+    </form>
+
+    <div class="footer">
+      Already have an account? <a href="Open_signin">Sign In</a>
+    </div>
+  </div>
 </body>
 </html>
