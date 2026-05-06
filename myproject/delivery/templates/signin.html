@@ -13,9 +13,8 @@
   <h2>Welcome Back</h2>
   <p class="subtitle">Enter your credentials to sign in</p>
 
-  <form action="{% url 'signin' %}" method="post">
+  <form action="{% url 'signin' %}" method="POST">
     {% csrf_token %}
-
     <label>Username</label>
     <input type="text" name="username" required>
 

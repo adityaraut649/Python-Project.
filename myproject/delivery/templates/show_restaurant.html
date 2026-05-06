@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurants</title>
+
+    {% load static %}
+
+    <style>
+
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:'Segoe UI', sans-serif;
+        }
+
+        body{
+            min-height:100vh;
+
+            background:
+            linear-gradient(
+                rgba(0,0,0,0.65),
+                rgba(0,0,0,0.65)
+            ),
+            url("{% static 'banner.png' %}");
+
+            background-size:cover;
+            background-position:center;
+            background-repeat:no-repeat;
+
+            padding:40px;
+        }
+
+        /* Navbar */
+
+        .navbar{
+            width:100%;
+            background:rgba(255,255,255,0.1);
+            backdrop-filter:blur(10px);
+
+            border-radius:15px;
+
+            padding:18px 35px;
+
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+
+            margin-bottom:35px;
+        }
+
+        .logo{
+            color:white;
+            font-size:2rem;
+            font-weight:bold;
+        }
+
+        .nav-links a{
+            text-decoration:none;
+            color:white;
+            margin-left:25px;
+            font-weight:600;
+            transition:0.3s;
+        }
+
+        .nav-links a:hover{
+            color:#ffd54f;
+        }
+
+        /* Main Container */
+
+        .table-container{
+
+            background:rgba(255,255,255,0.12);
+
+            backdrop-filter:blur(12px);
+
+            border:1px solid rgba(255,255,255,0.2);
+
+            border-radius:20px;
+
+            padding:30px;
+
+            box-shadow:0 8px 30px rgba(0,0,0,0.3);
+
+            overflow-x:auto;
+        }
+
+        h1{
+            color:white;
+            margin-bottom:25px;
+            text-align:center;
+            font-size:2.5rem;
+        }
+
+        table{
+            width:100%;
+            border-collapse:collapse;
+            overflow:hidden;
+            border-radius:15px;
+        }
+
+        thead{
+            background:#e53935;
+        }
+
+        thead th{
+            padding:18px;
+            color:white;
+            font-size:1rem;
+            text-align:center;
+        }
+
+        tbody tr{
+            background:rgba(255,255,255,0.08);
+            transition:0.3s;
+        }
+
+        tbody tr:hover{
+            background:rgba(255,255,255,0.16);
+        }
+
+        tbody td{
+            padding:18px;
+            text-align:center;
+            color:white;
+            border-bottom:1px solid rgba(255,255,255,0.1);
+        }
+
+        img{
+            width:120px;
+            height:90px;
+            object-fit:cover;
+            border-radius:12px;
+            border:2px solid rgba(255,255,255,0.2);
+        }
+
+        /* Buttons */
+
+        .action-btn{
+            display:block;
+
+            margin:8px auto;
+
+            padding:10px 14px;
+
+            width:180px;
+
+            text-decoration:none;
+
+            border-radius:10px;
+
+            font-size:14px;
+
+            font-weight:600;
+
+            transition:0.3s;
+        }
+
+        .update-btn{
+            background:#2563eb;
+            color:white;
+        }
+
+        .update-btn:hover{
+            background:#3b82f6;
+        }
+
+        .delete-btn{
+            background:#dc2626;
+            color:white;
+        }
+
+        .delete-btn:hover{
+            background:#ef4444;
+        }
+
+        .menu-btn{
+            background:#16a34a;
+            color:white;
+        }
+
+        .menu-btn:hover{
+            background:#22c55e;
+        }
+
+        @media(max-width:768px){
+
+            body{
+                padding:20px;
+            }
+
+            .navbar{
+                flex-direction:column;
+                gap:15px;
+            }
+
+            h1{
+                font-size:2rem;
+            }
+
+            table{
+                min-width:800px;
+            }
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <!-- Navbar -->
+
+    <nav class="navbar">
+
+        <div class="logo">
+            DeliveryApp
+        </div>
+
+        <div class="nav-links">
+            <a href="/">Home</a>
+            <a href="#">Restaurants</a>
+            <a href="#">Profile</a>
+        </div>
+
+    </nav>
+
+    <!-- Table Section -->
+
+    <div class="table-container">
+
+        <h1>Restaurants List</h1>
+
+        <table>
+
+            <thead>
+
+                <tr>
+                    <th>Restaurant Name</th>
+                    <th>Picture</th>
+                    <th>Cuisine</th>
+                    <th>Rating</th>
+                    <th>Operations</th>
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+                {% for r in restaurantList %}
+
+                <tr>
+
+                    <td>{{ r.name }}</td>
+
+                    <td>
+                        <img src="{{ r.picture }}" alt="Restaurant Image">
+                    </td>
+
+                    <td>{{ r.cuisine }}</td>
+
+                    <td>⭐ {{ r.rating }}</td>
+
+                    <td>
+
+                        <a href="{% url 'open_update_restaurant' r.id %}"
+                           class="action-btn update-btn">
+
+                            Update Restaurant
+
+                        </a>
+
+                        <a href="{% url 'delete_restaurant' r.id %}"
+                           class="action-btn delete-btn">
+
+                            Delete Restaurant
+
+                        </a>
+
+                        <a href="{% url 'open_update_restaurant' r.id %}"
+                           class="action-btn menu-btn">
+
+                            Update Menu
+
+                        </a>
+
+                    </td>
+
+                </tr>
+
+                {% endfor %}
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</body>
+</html>

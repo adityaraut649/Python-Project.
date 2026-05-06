@@ -4,15 +4,177 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Delivery App</title>
-    {% load static %}
-    <link rel="stylesheet" href="{% static 'style.css' %}" />
-  </head>
-  <body>
-    <div class="container">
-      <h1>Welcome to Delivery</h1>
 
-      <a href="Open_signup" class="btn signup">Sign Up</a>
-      <a href="Open_signin" class="btn signin">Sign In</a>
+    {% load static %}
+
+    <link rel="stylesheet" href="{% static 'style.css' %}" />
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: 'Montserrat', sans-serif;
+        min-height: 100vh;
+
+        /* Banner Background */
+        background: linear-gradient(
+            rgba(0, 0, 0, 0.45),
+            rgba(0, 0, 0, 0.45)
+          ),
+          url("{% static '../media/banner.png' %}");
+
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+      }
+
+      /* Navbar */
+      .navbar {
+        width: 100%;
+        padding: 18px 60px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: rgba(0, 0, 0, 0.35);
+        backdrop-filter: blur(8px);
+      }
+
+      .logo {
+        color: white;
+        font-size: 2rem;
+        font-weight: bold;
+        letter-spacing: 2px;
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 30px;
+      }
+
+      .nav-links a {
+        color: white;
+        text-decoration: none;
+        font-size: 1rem;
+        font-weight: 600;
+        transition: 0.3s;
+      }
+
+      .nav-links a:hover {
+        color: #ffd54f;
+      }
+
+      /* Main Section */
+      .main-content {
+        height: calc(100vh - 90px);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        padding: 20px;
+      }
+
+      .hero {
+        color: white;
+        max-width: 700px;
+      }
+
+      .hero h1 {
+        font-size: 4rem;
+        margin-bottom: 15px;
+      }
+
+      .hero p {
+        font-size: 1.3rem;
+        margin-bottom: 30px;
+      }
+
+      .buttons {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        flex-wrap: wrap;
+      }
+
+      .btn {
+        padding: 14px 32px;
+        border-radius: 8px;
+        text-decoration: none;
+        font-size: 1rem;
+        font-weight: 600;
+        transition: 0.3s;
+      }
+
+      .signup-btn {
+        background: #e53935;
+        color: white;
+      }
+
+      .signin-btn {
+        background: white;
+        color: #e53935;
+      }
+
+      .btn:hover {
+        transform: translateY(-3px);
+        opacity: 0.9;
+      }
+
+      /* Mobile Responsive */
+      @media (max-width: 768px) {
+        .navbar {
+          padding: 15px 20px;
+          flex-direction: column;
+          gap: 15px;
+        }
+
+        .hero h1 {
+          font-size: 2.5rem;
+        }
+
+        .hero p {
+          font-size: 1rem;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+      <div class="logo">DeliveryApp</div>
+
+      <div class="nav-links">
+        <a href="/">Home</a>
+        <a href="Open_signup">Sign Up</a>
+        <a href="Open_signin">Sign In</a>
+      </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="main-content">
+
+      <div class="hero">
+        <h1>FOOD DELIVERY</h1>
+
+        <p>Order fresh food to your door</p>
+
+        <div class="buttons">
+          <a href="Open_signup" class="btn signup-btn">
+            Sign Up
+          </a>
+
+          <a href="Open_signin" class="btn signin-btn">
+            Sign In
+          </a>
+        </div>
+      </div>
+
     </div>
+
   </body>
 </html>
